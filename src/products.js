@@ -2,12 +2,14 @@ import Product from './product'
 
 function Products() {
     return (
-      <div className="Products">
+      <div className="products">
         <Product />
         <Product />
         <Product />
         <Product />
         <Product />
+        <Product />
+
 
         </div>
     );
