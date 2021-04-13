@@ -2,7 +2,7 @@ import Product from './Product'
 
 function Products() {
     return (
-      <div className="products">
+      <section className="products">
         <Product />
         <Product />
         <Product />
@@ -11,7 +11,7 @@ function Products() {
         <Product />
 
 
-        </div>
+        </section>
     );
   }
   
