@@ -1,5 +1,5 @@
-import Header from './Header'
-import Products from './Products'
+import Header from './components/Header'
+import Products from './components/Products'
 import './App.css';
 
 function App() {
