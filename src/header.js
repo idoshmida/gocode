@@ -1,6 +1,6 @@
 function Header() {
     return (
-      <div className="header">
+      // <div className="header">
         
         <nav class="product-filter">
       <h1>Jackets</h1>
@@ -35,7 +35,7 @@ function Header() {
         </div>
       </div>
     </nav>
-      </div>
+      // </div>
     );
   }
   

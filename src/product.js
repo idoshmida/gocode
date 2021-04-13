@@ -1,6 +1,6 @@
 function Product() {
     return (
-      <div className="product">
+      // <div className="product">
          <div className="product-card">
         <div className="product-image">
           <img alt=""
@@ -12,7 +12,7 @@ function Product() {
           <h6>$99.99</h6>
         </div>
       </div>
-      </div>
+      // </div>
     );
   }
   
