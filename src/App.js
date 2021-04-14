@@ -3,13 +3,12 @@ import Products from './components/Products'
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-    <Header />
-
-    <Products />
-    </div>
-  );
+ 
+      return (
+        <div className="App">
+            <Header />
+            <Products />
+        </div>
+      );
 }
-
 export default App;
