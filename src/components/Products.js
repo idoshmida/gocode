@@ -9,7 +9,7 @@ function Products({productArr}) {
   return (
       <section className="products">
       
-          {productArr.map((objElement) => 
+          {productArr.map((objElement) => //אפשר לפרק דסטרקטצרינג
           <Product 
               key={objElement.id} 
               image={objElement.image} 

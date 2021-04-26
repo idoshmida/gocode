@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from './components/Header'
 import Products from './components/Products'
 import './App.css';
@@ -165,14 +166,44 @@ const arr =
   }
 ]
 
+const groupBy = (xs, key) => xs.reduce((rv, x) => {
+  (rv[x[key]] = true || []);
+  return rv;
+}, {});
+
+
+const categories = Object.keys(groupBy(arr, 'category'));
 
 function App() {
- 
+
+const [filteredArr, setFilteredArr] = useState(arr);
+
+function filterCategory(filteredCategory) {
+  console.log("filteredCategory");
+  setFilteredArr(arr.map(element => {
+
+
+  if (element.category === filteredCategory) {
+
+ return element
+
+  }}
+  
+  
+  
+  
+  )
+  
+  )}
+
       return (
         <div className="App">
-            <Header />
-            <Products productArr={arr}/>
+          {/* <input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="insert your text"/> */}
+
+            <Header categories={categories} filterCategory={filterCategory}/>
+             <Products productArr={filteredArr} /> 
         </div>
       );
-}
+    }
+
 export default App;
