@@ -9,14 +9,14 @@ function Header({categories, filterCategory}) {
 
       <div className="sort">
         <div className="collection-sort">
-          <label>Filter by:</label>
+          {/* <label>Filter by:</label>
           <select onChange={(e) => filterCategory(e.target.value)}>
           { categories.map((category, index) =>  (
             <option key={index} value={category}>{category}</option>
           
                 ))}
            
-          </select>
+          </select> */}
         </div>
 
         <div className="collection-sort">
