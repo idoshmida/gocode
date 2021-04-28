@@ -1,7 +1,9 @@
 import './Header.css'
-function Header({categories, filterCategory}) {
 
-  // console.log(e.target.value)
+
+function Header({categories, filteredCategory}) {
+
+
     return (
         
         <nav className="product-filter">
@@ -9,14 +11,16 @@ function Header({categories, filterCategory}) {
 
       <div className="sort">
         <div className="collection-sort">
-          {/* <label>Filter by:</label>
-          <select onChange={(e) => filterCategory(e.target.value)}>
+
+          <label>Filter by:</label>
+          <select  onChange={(e) => {filteredCategory(e.target.value) }}>
+            <option   >all categories</option>
           { categories.map((category, index) =>  (
             <option key={index} value={category}>{category}</option>
           
                 ))}
-           
-          </select> */}
+          </select>
+
         </div>
 
         <div className="collection-sort">
