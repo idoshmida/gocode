@@ -259,3 +259,23 @@
         align-self: flex-start;
       }
     }
+
+    .App {
+      display: flex;
+  
+      justify-content: flex-start
+
+    }
+
+    .cart {
+      display: flex;
+      flex-direction: column;
+
+      border: 1px solid black;
+width: 100%;
+    }
+
+    .cart-item {
+
+      /* border: 1px solid black; */
+    }
