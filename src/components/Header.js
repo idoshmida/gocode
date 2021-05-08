@@ -1,26 +1,50 @@
-import './Header.css'
+import "./Header.css";
+import Slider from "@material-ui/core/Slider";
+import Typography from "@material-ui/core/Typography";
+import React, { useContext } from "react";
+import { CartContext } from "../App";
 
+import { useState } from "react";
 
-function Header({categories, filteredCategory}) {
+function Header({ categories, filteredCategory }) {
+  const { sliderState, setSliderState } = useContext(CartContext);
 
+  const handleChange = (event, newValue) => {
+    setSliderState(newValue);
+  };
 
-    return (
-        
-        <nav className="product-filter">
-      <h1>Jackets</h1>
+  function valuetext(sliderState) {
+    return `${sliderState}°C`;
+  }
+
+  return (
+    <nav className="product-filter">
+      <Typography id="range-slider" gutterBottom>
+        Price range
+      </Typography>
+      <Slider
+        value={sliderState}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        aria-labelledby="range-slider"
+        getAriaValueText={valuetext}
+      />
 
       <div className="sort">
         <div className="collection-sort">
-
           <label>Filter by:</label>
-          <select  onChange={(e) => {filteredCategory(e.target.value) }}>
-            <option   >all categories</option>
-          { categories.map((category, index) =>  (
-            <option key={index} value={category}>{category}</option>
-          
-                ))}
+          <select
+            onChange={(e) => {
+              filteredCategory(e.target.value);
+            }}
+          >
+            <option>all categories</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
           </select>
-
         </div>
 
         <div className="collection-sort">
@@ -38,7 +62,7 @@ function Header({categories, filteredCategory}) {
         </div>
       </div>
     </nav>
-    );
-  }
-  
-  export default Header;
+  );
+}
+
+export default Header;
