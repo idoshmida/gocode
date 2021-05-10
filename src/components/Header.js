@@ -4,8 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
 import { CartContext } from "../App";
 
-import { useState } from "react";
-
 function Header({ categories, filteredCategory }) {
   const { sliderState, setSliderState } = useContext(CartContext);
 
@@ -28,6 +26,7 @@ function Header({ categories, filteredCategory }) {
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
+        max={200}
       />
 
       <div className="sort">

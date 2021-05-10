@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../App";
 
 function Product({ id, title, price, description, category, image }) {
@@ -13,13 +14,19 @@ function Product({ id, title, price, description, category, image }) {
       <div className="product-info">
         <div>
           {" "}
-          item no.{id} <br></br>
+          <Link to={`/product/${id}`}> item no.{id} </Link>
+          <br></br>
           {title}
         </div>
         <h6>{price} $</h6>
         <button
           onClick={() => {
-            setCartItems([...cartItems, { image, price, title, id }]);
+            const countItems = cartItems.filter((item) => item.id === id);
+            setCartItems([
+              ...cartItems,
+              { image, price, title, id, count: countItems.length + 1 },
+            ]);
+            // setCartItems(cartItems.splice(cartItems.find((item, index) => ()),1))
           }}
         >
           add to cart

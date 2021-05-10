@@ -262,17 +262,25 @@ h6 {
 
 .App {
   display: flex;
-
-  justify-content: flex-start;
+  flex-direction: row;
+  /* justify-content: flex-start; */
 }
 
 .cart {
+  position: relative;
+  width: 12%;
+  height: 100vh;
+  background: grey;
+  font-size: 0.65em;
+  left: 0;
+
+  /* position: fixed;
   display: table-column;
   flex-direction: column;
   width: 300px;
 
   border: 1px solid black;
-  width: 100%;
+  width: 100%; */
 }
 
 .cart-item {
