@@ -26,10 +26,9 @@ function Product({ id, title, price, description, category, image }) {
               ...cartItems,
               { image, price, title, id, count: countItems.length + 1 },
             ]);
-            // setCartItems(cartItems.splice(cartItems.find((item, index) => ()),1))
           }}
         >
-          add to cart
+          add to this cart
         </button>
       </div>
     </div>
