@@ -12,11 +12,12 @@ export const CartContext = React.createContext();
 function cartReducer(state, action) {
   switch (action.type) {
     case "add":
+      console.log("cart inside reduceradd", state);
+
       return [...state, action.item];
     case "delete":
-      const itemKey = state.findIndex(
-        (item) => item.title === action.item.title
-      );
+      const itemKey = state.findIndex((item) => item.id === action.item.id);
+      console.log("itemKey after state.findIndex(...)", itemKey);
       const update = [...state];
       update.splice(itemKey, 1);
       return update;
@@ -37,10 +38,12 @@ function App() {
 
   function add(item) {
     setCart({ item, type: "add" });
+    console.log("cart inside add()", cart);
   }
 
   function remove(item) {
     setCart({ item, type: "delete" });
+    console.log("cart after remove", cart);
   }
 
   // const { setCartItems, cartItems } = useContext(CartContext);

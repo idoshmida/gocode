@@ -7,7 +7,8 @@ function Cart() {
 
   const filteredCart = cart
     .filter(
-      (obj, index, arr) => arr.findIndex((t) => t.title === obj.title) === index
+      (obj, indexcart, arr) =>
+        arr.findIndex((t) => t.title === obj.title) === indexcart
     )
     .map((obj, index) => (
       <div key={index} className="cart-item">
@@ -17,7 +18,8 @@ function Cart() {
         </div>
         <button
           onClick={() => {
-            remove(cart[index]);
+            const a = cart.findIndex((e) => e.id === obj.id); //משווה אינדקס של עגלה לאינדקס של עגלה מפולטרת
+            remove(cart[a]);
           }}
         >
           remove
@@ -30,7 +32,9 @@ function Cart() {
   return (
     <div>
       <p>this is the cart:</p> <br></br>
-      <div>{filteredCart}</div>
+      <div>
+        {filteredCart} {console.log(cart)}
+      </div>
     </div>
   );
 }
