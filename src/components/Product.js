@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../App";
 
 function Product({ id, title, price, description, category, image }) {
-  const { setCartItems, cartItems } = useContext(CartContext);
+  const { add } = useContext(CartContext);
 
   return (
     <div className="product-card">
@@ -21,14 +21,10 @@ function Product({ id, title, price, description, category, image }) {
         <h6>{price} $</h6>
         <button
           onClick={() => {
-            const countItems = cartItems.filter((item) => item.id === id);
-            setCartItems([
-              ...cartItems,
-              { image, price, title, id, count: countItems.length + 1 },
-            ]);
+            add({ id, title, price, image });
           }}
         >
-          add to this cart
+          add to cart
         </button>
       </div>
     </div>

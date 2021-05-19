@@ -2,23 +2,46 @@ import "./App.css";
 
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import Header from "./components/Header";
 import Products from "./components/Products";
 import ProductPage from "./components/ProductPage";
-
 import Cart from "./components/Cart";
-// import { isDOMComponent } from 'react-dom/test-utils';
 export const CartContext = React.createContext();
+
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "add":
+      return [...state, action.item];
+    case "delete":
+      const itemKey = state.findIndex(
+        (item) => item.title === action.item.title
+      );
+      const update = [...state];
+      update.splice(itemKey, 1);
+      return update;
+    default:
+      return state;
+  }
+}
 
 function App() {
   const [productArr, setProducts] = useState([]);
 
   const [categoryState, setCategoryState] = useState("all categories");
 
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useReducer(cartReducer, []);
 
   const [sliderState, setSliderState] = useState([5, 190]);
+
+  function add(item) {
+    setCart({ item, type: "add" });
+  }
+
+  function remove(item) {
+    setCart({ item, type: "delete" });
+  }
 
   // const { setCartItems, cartItems } = useContext(CartContext);
 
@@ -59,7 +82,7 @@ function App() {
         <Route>
           <div className="App">
             <CartContext.Provider
-              value={{ cartItems, setCartItems, sliderState, setSliderState }}
+              value={{ cart, add, remove, sliderState, setSliderState }}
             >
               <aside
                 className="cart
