@@ -5,6 +5,14 @@ function Cart() {
   const { remove, cart } = useContext(CartContext);
   // const [countState, setCountState] = useState(0);
 
+  function getTotal(cart) {
+    const total = cart.reduce((totalcost, item) => totalcost + item.price, 0);
+    return total.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
+
   const filteredCart = cart
     .filter(
       (obj, indexcart, arr) =>
@@ -24,6 +32,7 @@ function Cart() {
         >
           remove
         </button>
+        <div>{cart.filter((cartItem) => cartItem.id === obj.id).length}</div>
         <hr></hr>
         <br></br>
       </div>
@@ -32,8 +41,11 @@ function Cart() {
   return (
     <div>
       <p>this is the cart:</p> <br></br>
+      <div>Total Items: {cart.length}</div>
+      <div>Total Cost: {getTotal(cart)} </div>
       <div>
-        {filteredCart} {console.log(cart)}
+        {/*why filteredCart is rendered without its beein in state????? < */}
+        {filteredCart}
       </div>
     </div>
   );
